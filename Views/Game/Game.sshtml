@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Great Number Game</title>
+        <link rel="stylesheet" href="Content/style.css"/>
+    </head>
+    <body>
+    <div align = "center">
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am think of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+
+        @If.Context.ViewBag.Show
+            <form action="/formsubmitted" method="post">
+                <input type="number" name="myGuess"/><br>
+                <input type="submit" value="Submit">
+            </form>
+        @EndIf
+
+        @If.Context.ViewBag.Low
+            <div>Too Low!</div>
+            <form action="/formsubmitted" method="post">
+                <input type="number" name="myGuess"/><br>
+                <input type="submit" value="Submit">
+            </form>
+        @EndIf
+
+        @If.Context.ViewBag.High
+            <div>Too High!</div>
+            <form action="/formsubmitted" method="post">
+                <input type="number" name="myGuess"/><br>
+                <input type="submit" value="Submit">
+         </form>
+        @EndIf
+
+        @If.Context.ViewBag.Correct
+            <div>
+                <p>@ViewBag.Randnum was the number!</p>
+                <form action="/reset" method="post">
+                    <input type="submit" value="Play Again!">
+                </form>
+            </div>
+        @EndIf
+
+    </div>   
+    </body>
+</html>
